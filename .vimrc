@@ -1,1 +1,0 @@
-/home/wallflower/.dotfiles/vimrc
