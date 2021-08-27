@@ -1,0 +1,353 @@
+set nocompatible              " be iMproved, required
+filetype off                  " required
+
+" ======================== CALL VUNDLE ========================================
+
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" ======================== PLUGINS START HERE =================================
+
+" let Vundle manage Vundle, required
+Plugin 'VundleVim/Vundle.vim'
+
+" ======= GitGutter
+Plugin 'airblade/vim-gitgutter'
+
+" ======== Fugitive - A Git Wrapper
+Plugin 'tpope/vim-fugitive'
+
+" ======= Vim Signify - show changes per VCS in gutter
+Plugin 'mhinz/vim-signify'
+
+" ======== NERDTree - Traverse through Files
+Plugin 'scrooloose/nerdtree'
+
+" ======== Syntastic - syntax checking
+Plugin 'scrooloose/syntastic'
+
+" Syntastic settings
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" Disable Syntastic for Java
+let g:syntastic_mode_map = { 'mode': 'active',
+                           \ 'active_filetypes': ['foo', 'bar'],
+                           \ 'passive_filetypes': ['java'] }
+                           
+" Disable syantastic java completer
+"let g:syntastic_java_checkers = []
+
+
+" ======= ZoomWin
+Plugin 'ZoomWin'
+
+" ======= Airline
+Plugin 'vim-airline/vim-airline'
+
+" Airline Theme
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_theme='base16_google'
+
+" Airline - settings
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ''
+let g:airline#extensions#tabline#left_alt_sep = ''
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+let g:airline_left_sep = ''
+let g:airline_right_sep=''
+let g:airline_detect_modified=1
+let g:airline_detect_paste=1
+
+"let g:airline#extensions#tabline#exclude_buffers = 1
+let g:airline#extensions#ale#enabled = 1
+let g:airline#extensions#bufferline#enabled = 1
+let g:airline#extensions#fugitiveline#enabled = 1
+let g:airline#extensions#fzf#enabled = 1
+let g:airline#extensions#syntastic#enabled = 1
+let g:airline#extensions#ycm#enabled = 1
+
+
+" ======= Tabular - Indentation for text files
+Plugin 'godlygeek/tabular'
+
+" ======= ALE - semantic errors
+Plugin 'w0rp/ale'
+
+" Enable completion where available. This setting must be set before ALE is loaded.
+" You should not turn this setting on if you wish to use ALE as a completion
+" source for other completion plugins, like Deoplete.
+let g:ale_completion_enabled = 1
+
+" ALE supports automatic imports from external modules
+let g:ale_completion_autoimport = 1
+
+" ======= fzf - fuzzy finder
+"Plugin '~/.fzf'
+Plugin 'junegunn/fzf'
+" {} is replaced to the single-quoted string of the focused line
+"fzf --preview 'cat {}'
+
+
+" ======= Tagbar - displays function, class, etc
+Plugin 'majutsushi/tagbar'
+
+" ======= Commentary
+Plugin 'tpope/vim-commentary'
+
+" ========== Unite - file, buffer, etc searcher like fzf
+Plugin 'shougo/unite.vim'
+
+" ======= UltiSnips - Snippets
+Plugin 'SirVer/ultisnips'
+
+" Snippets are separated from the engine. Add this if you want them:
+"Plugin 'honza/vim-snippets'
+
+" Trigger configuration. You need to change this to something else than <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<c-a>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+" ======= Vim Snippets (uses UltiSnips as engine)
+Plugin 'honza/vim-snippets'
+
+" ======= Markdown - for .md use in vim
+Plugin 'plasticboy/vim-markdown'
+
+" ======= Gundo - GUI of vim undo tree
+Plugin 'sjl/gundo.vim'
+
+" ======= a.vim - switch between Header and main files
+Plugin 'a.vim'
+
+" ======= Powerline in vim
+Plugin 'powerline/powerline'
+
+" ======= Vim Test - Run test suites for various languages
+Plugin 'janko-m/vim-test'
+
+" ======= YouCompleteMe
+Plugin 'ycm-core/YouCompleteMe'
+
+" ======= Vim Bufferline
+Plugin 'bling/vim-bufferline'
+
+" ======= TODO.vim
+Plugin 'freitass/todo.txt-vim'
+
+" ======= Vim-PolyGlot - Language Manager
+Plugin 'sheerun/vim-polyglot'
+
+" ======= Delimitmate - Braces Pair
+Plugin 'raimondi/delimitmate'
+
+
+" ================= SOME UNSED PLUGINS ====================
+" ======= Emmet - shorthand for HTML and CSS
+" Plugin 'mattn/emmet-vim'
+"
+" ======= vim-colourscheme
+"Plugin 'flazz/vim-colorschemes'
+"
+" ======== Fern-Tree - Navigate and manipulate files in a tree view
+"Plugin 'lambdalisue/fern-mapping-mark-children.vim'
+
+" ======= AutoComplPop - show auto complete drop down menu
+"Plugin 'AutoComplPop'
+
+" Plugin 'c.vim'		" C.vim - C/C++ IDE
+
+"Plugin 'artur-shaik/vim-javacomplete2'
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" ======= CoC (Conquer Of Completion)
+"Plugin 'neoclide/coc.nvim'
+
+
+
+" ================= LANGUAGES AND FILE TYPES ==============
+Plugin 'pangloss/vim-javascript'
+Plugin 'tpope/vim-git'
+
+Plugin 'vim-python/python-syntax'
+let g:python_highlight_all = 1
+
+Plugin 'udalov/kotlin-vim'
+Plugin 'taglist.vim' " Source Code browser
+
+Plugin 'rip-rip/clang_complete'
+
+Plugin 'nvie/vim-flake8'    " Press F7 to run flake 8
+
+Plugin 'dbext.vim'  "provide access to many DBMS
+Plugin 'mechatroner/rainbow_csv'    "Highlight columns in CSV, TSV, SQL-like languages query
+
+Plugin 'dart-lang/dart-vim-plugin'    " Dart
+Plugin 'natebosch/vim-lsc'
+Plugin 'natebosch/vim-lsc-dart'
+Plugin 'thosakwe/vim-flutter'         " Flutter
+
+Plugin 'alvan/vim-closetag'
+Plugin 'valloric/matchtagalways'
+
+" DevDocs
+command! -nargs=? DevDocs :call system('python3 /home/wallflower/Documents/devdocs.py <args> &')
+au FileType python,ruby,javascript,html,php,eruby,coffee nmap <buffer> K :exec "DevDocs " . fnameescape(expand('<cword>'))<CR>
+
+
+
+
+
+" ================================= PLUGINS END HERE ==========================
+
+
+
+
+" -----------------------------------------------------------------------------
+" ================= COLOUR SETTINGS AND COLOUR PLUGINS =======================
+" -----------------------------------------------------------------------------
+
+" ======= Oceanic Next - colorscheme
+Plugin 'mhartington/oceanic-next'
+
+" ======= Pale Night - colorscheme
+Plugin 'drewtempelmeyer/palenight.vim'
+
+" ======= One Dark - Atom default colorscheme
+Plugin 'joshdick/onedark.vim'
+
+" ======= Molokai - colorscheme
+Plugin 'tomasr/molokai'
+let g:molokai_original = 1
+
+" Enable syntax highlighting.
+syntax on
+syntax enable
+
+if (has("termguicolors"))
+    set termguicolors
+endif
+
+" Set the color scheme.
+set background=dark
+" colorscheme palenight
+colorscheme molokai
+" colorscheme OceanicNext
+
+
+
+
+" -----------------------------------------------------------------------------
+" ================= STATUS LINE ===========================
+" -----------------------------------------------------------------------------
+
+" Heavily inspired by: https://github.com/junegunn/dotfiles/blob/master/vimrc
+function! s:statusline_expr()
+  let mod = "%{&modified ? '[+] ' : !&modifiable ? '[x] ' : ''}"
+  let ro  = "%{&readonly ? '[RO] ' : ''}"
+  let ft  = "%{len(&filetype) ? '['.&filetype.'] ' : ''}"
+  let fug = "%{exists('g:loaded_fugitive') ? fugitive#statusline() : ''}"
+  let sep = ' %= '
+  let pos = ' %-12(%l : %c%V%) '
+  let pct = ' %P'
+
+  return '[%n] %f %<'.mod.ro.ft.fug.sep.pos.'%*'.pct
+endfunction
+
+let &statusline = s:statusline_expr()
+
+" Integrating Vim-Bufferline with Status Line
+let g:bufferline_echo = 0
+  autocmd VimEnter *
+    \ let &statusline='%{bufferline#refresh_status()}'
+      \ .bufferline#get_status_string()
+
+
+
+" ================================= SET VALUES FOR VIM ========================
+set autoindent
+set encoding=utf-8
+set hlsearch
+set ignorecase
+set number relativenumber
+set ruler
+set splitright
+set wrap
+set nocp
+
+" Setting tabsize
+"set tabstop=8
+"set shiftwidth=4
+"set softtabstop=4
+"set noexpandtab
+
+
+" -----------------------------------------------------------------------------
+" ================ BASIC KEY REMAPPINT ====================
+" -----------------------------------------------------------------------------
+
+" Cycle through splits.
+nnoremap <S-Tab> <C-w>w
+
+" To print the directory after changing of open buffer, so you know where you ended up
+nnoremap <leader>cd :cd %:p:h<CR>:pwd<CR>
+
+" For TagBar toggle key remapping
+nmap <F8> :TagbarToggle<CR>
+
+
+" =============================================================================
+
+" -----------------------------------------------------------------------------
+" ================= BASIC AUTOCOMMANDS ====================
+" -----------------------------------------------------------------------------
+
+" Auto-resize splits when Vim gets resized.
+autocmd VimResized * wincmd =
+
+" Update a buffer's contents on focus if it changed outside of Vim.
+au FocusGained,BufEnter * :checktime
+
+" Unset paste on InsertLeave.
+autocmd InsertLeave * silent! set nopaste
+
+" Make sure all types of requirements.txt files get syntax highlighting.
+autocmd BufNewFile,BufRead requirements*.txt set syntax=python
+
+" Ensure tabs don't get converted to spaces in Makefiles.
+autocmd FileType make setlocal noexpandtab
+
+" Set the current 'pwd' to open file directory
+autocmd BufEnter * silent! lcd %:p:h
+
+
+
+" =============================================================================
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+filetype plugin on
+"
+" Brief help
+" :PluginList       - lists configured plugins
+" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+" :PluginSearch foo - searches for foo; append `!` to refresh local cache
+" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+"
+" see :h vundle for more details or wiki for FAQ
+" Put your non-Plugin stuff after this line
